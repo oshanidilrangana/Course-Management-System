@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 const bodyParser = require("body-parser");
 const coursesRoutes = require("./routes/courseRoutes");
@@ -21,8 +22,18 @@ app.use("/api/students", studentRoutes);
 app.use("/api/registrations", registrationRoutes);
 app.use("/api/results", resultRoutes);
 
-// Basic route
-app.get('/', (req, res) => res.send('Course Management System API is running'));
+// Serve static files in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/build')));
+  
+  // Handle React routing, return all requests to React app
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+  });
+} else {
+  // Basic route for development
+  app.get('/', (req, res) => res.send('Course Management System API is running'));
+}
 
 // Error handling middleware
 app.use((err, req, res, next) => {

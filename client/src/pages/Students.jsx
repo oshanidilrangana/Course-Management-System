@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Card, Button, Table, Spinner, Alert, Badge, Form } from 'react-bootstrap';
 import { theme, pageContainerStyle, pageHeaderStyle } from '../theme/styles';
 
-const API = 'http://localhost:5000/api/students';
+const API = 'http://localhost:5001/api/students';
 
 const Students = () => {
   const [students, setStudents] = useState([]);

@@ -17,7 +17,7 @@ function Courses() {
   const fetchCourses = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch("http://localhost:5000/api/courses");
+      const response = await fetch("http://localhost:5001/api/courses");
       const data = await response.json();
       setCourses(data);
       setError("");
@@ -52,8 +52,8 @@ function Courses() {
     
     try {
       const url = editingId 
-        ? `http://localhost:5000/api/courses/${editingId}`
-        : 'http://localhost:5000/api/courses';
+        ? `http://localhost:5001/api/courses/${editingId}`
+        : 'http://localhost:5001/api/courses';
       
       const method = editingId ? 'PUT' : 'POST';
       
@@ -88,7 +88,7 @@ function Courses() {
     if (!window.confirm("Are you sure you want to delete this course?")) return;
     
     try {
-      const response = await fetch(`http://localhost:5000/api/courses/${id}`, {
+      const response = await fetch(`http://localhost:5001/api/courses/${id}`, {
         method: "DELETE",
       });
 

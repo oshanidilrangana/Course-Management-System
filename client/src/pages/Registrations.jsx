@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Container, Card, Button, Table, Spinner, Alert, Form, Row, Col } from 'react-bootstrap';
 import { theme, pageContainerStyle, pageHeaderStyle } from '../theme/styles';
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "http://localhost:5001/api";
 const API_STUDENTS = `${API_BASE}/students`;
 const API_COURSES = `${API_BASE}/courses`;
 const API_REGISTRATIONS = `${API_BASE}/registrations`;
